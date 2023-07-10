@@ -1,4 +1,4 @@
-async function readTxtFile(url) {
+async function readFileContent(url) {
     try {
         const response = await fetch(url);
 
@@ -6,17 +6,17 @@ async function readTxtFile(url) {
             const content = await response.text();
             displayContent(content);
         } else {
-            console.error("Error fetching the TXT file:", response.status, response.statusText);
+            console.error("获取文件时出错：", response.status, response.statusText);
         }
     } catch (error) {
-        console.error("Error fetching the TXT file:", error);
+        console.error("获取文件时出错：", error);
     }
 }
 
 function displayContent(content) {
-    const txtContentElement = document.getElementById("txt-content");
-    txtContentElement.textContent = content;
+    const fileContentElement = document.getElementById("file-content");
+    fileContentElement.textContent = content;
 }
 
-const txtFileUrl = "https://your-github-pages-url.com/path/to/your/txt/file.txt";
-readTxtFile(txtFileUrl);
+const fileUrl = "blog1.txt";
+readFileContent(fileUrl);
