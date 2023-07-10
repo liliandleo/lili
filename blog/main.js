@@ -1,10 +1,10 @@
-async function readFileContent(url) {
+async function readFileContent(url, elementId) {
     try {
         const response = await fetch(url);
 
         if (response.ok) {
             const content = await response.text();
-            displayContent(content);
+            displayContent(content, elementId);
         } else {
             console.error("获取文件时出错：", response.status, response.statusText);
         }
@@ -13,10 +13,11 @@ async function readFileContent(url) {
     }
 }
 
-function displayContent(content) {
-    const fileContentElement = document.getElementById("file-content");
+function displayContent(content, elementId) {
+    const fileContentElement = document.getElementById(elementId);
     fileContentElement.textContent = content;
 }
 
-const fileUrl = "blog1.txt";
-readFileContent(fileUrl);
+const blog1FileUrl = "blog1.txt";
+const blog1ElementId = "blog1-content";
+readFileContent(blog1FileUrl, blog1ElementId);
